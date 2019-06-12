@@ -19,7 +19,11 @@ class Node:
 
 def top_view(root):
 	dist_from_root=dict()
+
+
 	top_view_Util(root,0,dist_from_root)
+
+
 	for i in sorted(dist_from_root):
 		print(dist_from_root[i],end=' ')
 
@@ -45,7 +49,27 @@ def top_view_Util(nodes,distance,distance_dict):
 # Right View
 
 def right_view(root):
-	pass
+    # Code here
+    if not root:
+    	return
+    else:
+    	q=[]
+    	a={}
+    	maxlevel=0
+    	q.append([root,0])
+    	while len(q)!=0:
+    		t = q.pop(0)
+    		node = t[0]
+    		level = t[1]
+    		a[level]=node.data
+    		 
+    		if node.left:
+    			q.append([node.left,level+1])
+    		if node.right:
+    			q.append([node.right,level+1])
+    	
+    	print(a)
+
 
 
 def bottom_view(root):
@@ -82,7 +106,7 @@ def left_view(root, level, max_level):
   
     # If this is the first node of its level 
     if (max_level[0] < level): 
-        print("%d" %(root.data),end=' ') 
+        print(root.data,end=' ') 
         max_level[0] = level 
   
     # Recur for left and right subtree 
@@ -90,6 +114,51 @@ def left_view(root, level, max_level):
     left_view(root.right, level+1, max_level)
 
 
+def printLeftView(root):
+    # Code here
+    if not root:
+    	return
+    else:
+    	q=[]
+    	a=[]
+    	maxlevel=0
+    	q.append([root,1])
+    	while len(q)!=0:
+    		t = q.pop(0)
+    		node = t[0]
+    		level = t[1]
+    		
+    		if level > maxlevel:
+    		    print(node.data,end=" ")
+    		    maxlevel = level
+    		if node.left:
+    			q.append([node.left,level+1])
+    		if node.right:
+    			q.append([node.right,level+1])
+
+
+
+def top_view_Util(nodes,distance,distance_dict):
+	q=[]
+	q.append([nodes,distance])
+	while len(q)!=0:
+		temp=q.pop(0)
+		node=temp[0]
+		distance=temp[1]
+
+		if distance not in distance_dict:
+			distance_dict[distance]=node.data
+			print(node.data,end=' ')
+		if node.left:
+			q.append([node.left,distance-1])
+		if node.right:
+			q.append([node.right,distance+1])
+			
+			
+def printTopView(root):
+    dist_from_root=dict()
+    top_view_Util(root,0,dist_from_root)
+    
 
 
 if __name__ == '__main__':
@@ -126,3 +195,4 @@ if __name__ == '__main__':
 	left_view(root,1,max_level = [0])
 
 	print("\n")
+

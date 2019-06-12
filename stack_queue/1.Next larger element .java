@@ -1,8 +1,6 @@
 
-
 // Next larger element 
 // https://practice.geeksforgeeks.org/problems/next-larger-element/0
-
 
 import java.util.*;
 import java.lang.*;
@@ -70,60 +68,57 @@ class GFG {
 	}
 }
 
-// Stack 
+// Stack
 
 // if stack is Empty : -1
 // pop until not found > present Number => if found the print it.
 
+/* package whatever //do not write package name here */
 
-/*package whatever //do not write package name here */
-
-import java.util.*;
-import java.lang.*;
-import java.io.*;
+// import java.util.*;
+// import java.lang.*;
+// import java.io.*;
 
 class GFG {
-	public static void main (String[] args) {
-		//code
+	public static void main(String[] args) {
+		// code
 		Scanner ss = new Scanner(System.in);
-		
+
 		int t = ss.nextInt();
-		
-		while(t-->0){
-		    int n = ss.nextInt();
-		    long[] arr = new long[n];
-		    long[] ans = new long[n];
-		    
-		    for(int i=0;i<n;i++){
-		        arr[i]=ss.nextLong();
-		    }
-		    
-		    Stack<Long> s = new Stack<Long>();
-		    
-		    for(int i=n-1;i>=0;i--){
-		        
-		       
-		        while(!s.isEmpty()){
-		            if(s.peek()<arr[i]){
-		                s.pop();
-		            }else{
-		                 ans[i]=s.peek();
-		                 s.push(arr[i]);
-		                 break;
-		            }
-		        }
-		        if(s.isEmpty()){
-		            ans[i]=-1;
-		            s.push(arr[i]);
-		        }
-		      
-		    }
-		   
-		    for(int i=0;i<n;i++)
-		    {
-		        System.out.print(ans[i] +" ");
-		    }
-		    System.out.println("");
+
+		while (t-- > 0) {
+			int n = ss.nextInt();
+			long[] arr = new long[n];
+			long[] ans = new long[n];
+
+			for (int i = 0; i < n; i++) {
+				arr[i] = ss.nextLong();
+			}
+
+			Stack<Long> s = new Stack<Long>();
+
+			for (int i = n - 1; i >= 0; i--) {
+
+				while (!s.isEmpty()) {
+					if (s.peek() < arr[i]) {
+						s.pop();
+					} else {
+						ans[i] = s.peek();
+						s.push(arr[i]);
+						break;
+					}
+				}
+				if (s.isEmpty()) {
+					ans[i] = -1;
+					s.push(arr[i]);
+				}
+
+			}
+
+			for (int i = 0; i < n; i++) {
+				System.out.print(ans[i] + " ");
+			}
+			System.out.println("");
 		}
 	}
 }
