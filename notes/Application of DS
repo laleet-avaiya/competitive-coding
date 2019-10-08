@@ -1,0 +1,12 @@
+stack:
+
+Features of stacks
+
+    Dynamic data structures
+    Do not have a fixed size
+    Do not consume a fixed amount of memory
+    Size of stack changes with each operation. Each operation increases or decreases the size of the stack by 1, respectively.
+
+Application
+
+	Consider the balanced parentheses problem.
